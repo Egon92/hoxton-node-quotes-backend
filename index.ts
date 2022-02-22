@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
+
 const app = express();
+app.use(cors());
 app.use(express.json());
+
 const PORT = 4000;
 
 type Quotes = {
@@ -98,8 +101,7 @@ let quotes: Quotes[] = [
     content: "Not how long, but how well you have lived is the main thing.",
   },
 ];
-const cors = require("cors");
-app.use(cors());
+
 app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
