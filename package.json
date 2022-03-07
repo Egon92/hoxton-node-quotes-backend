@@ -1,7 +1,6 @@
 {
   "name": "hoxton-node-quotes-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "@types/node": "^17.0.19",
@@ -19,5 +18,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Egon92/hoxton-node-quotes-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Egon92/hoxton-node-quotes-backend/issues"
+  },
+  "homepage": "https://github.com/Egon92/hoxton-node-quotes-backend#readme",
+  "description": ""
 }

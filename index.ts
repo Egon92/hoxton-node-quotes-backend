@@ -5,16 +5,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 4000;
+const PORT = 3001;
 
-type Quotes = {
+type Quote = {
   id: number;
   name: string;
   age: string | null;
   image: string;
   content: string;
 };
-let quotes: Quotes[] = [
+let quotes: Quote[] = [
   {
     id: 1,
     name: "Dalai Lama",
@@ -102,7 +102,25 @@ let quotes: Quotes[] = [
   },
 ];
 
-app.get("/quotes", (req, res) => {
+app.get(`/`, (req, res) => {
+  res.send(`<h1 style="color: red; display: grid; text-align: center;">Welcome to our quotes API!</h1>
+             <p style="display: grid; text-align: center; font-size: 20px;">Here are some endpoints you can use:</p>
+             <a href="/quotes" style="display: grid; text-align: center; font-size: 25px; font-weight:700;">quotes</a>
+  `);
+});
+
+app.get(`/quotes`, (req, res) => {
   res.send(quotes);
 });
-app.listen(PORT);
+
+app.get(`/quotes/:id`, (req, res) => {
+  let id = req.params.id;
+  let foundQuote = quotes.find((quote) => quote.id === Number(id));
+  foundQuote
+    ? res.send(foundQuote)
+    : res.status(404).send({ error: "Quote not found!" });
+});
+
+app.listen(PORT, () => {
+  return console.log(`server is listening on http://localhost:${PORT}`);
+});
